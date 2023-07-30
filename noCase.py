@@ -33,7 +33,6 @@ def rollWear():
     return res
         
 def rarityStats(skin, stats):
-#    stats = {"Blue":0,"Purple":0,"Pink":0,"Red":0,"Gold":0}
     if skin == "Blue":
         stats["Blue"] += 1
     elif skin == "Purple":
@@ -68,48 +67,50 @@ def rollMultiple():
     print("Your statistics look like this:")
     print(stats)
 
+def run():
+    while True:
+        simType = input("Would you like to roll single skin each time (S) or simulate opening multiple skins (M)? (Type S or M) ")
 
-while True:
-    simType = input("Would you like to roll single skin each time (S) or simulate opening multiple skins (M)? (Type S or M) ")
-
-    if simType.upper() == 'S':
-        print("Single it is!")
-        print('')
-        print(rollRarity()+ " " + rollWear())
-        nrOfRolls = 1
-        while True:
+        if simType.upper() == 'S':
             print('')
-            repeat = input("Again? (Y/N) ")
+            print("Single it is!")
             print('')
-            if repeat.upper() == 'Y':
-                nrOfRolls += 1
-                print("(Roll number: " + str(nrOfRolls) + ")")
-                print(rollRarity()+ " " + rollWear())
-            elif repeat.upper() == 'N':
-                print("Okay, bye!")
-                break
-            else:
-                print("Write Y (Yes) or N (No) ")
-        break
+            print(rollRarity()+ " " + rollWear())
+            nrOfRolls = 1
+            while True:
+                print('')
+                repeat = input("Again? (Y/N) ")
+                print('')
+                if repeat.upper() == 'Y':
+                    nrOfRolls += 1
+                    print("(Roll number: " + str(nrOfRolls) + ")")
+                    print(rollRarity()+ " " + rollWear())
+                elif repeat.upper() == 'N':
+                    print("Okay, bye!")
+                    break
+                else:
+                    print("Write Y (Yes) or N (No) ")
+            break
 
 
-    elif simType.upper() == 'M':
-        print("Multiple it is!")
-        print('')
-        
-        rollMultiple()
+        elif simType.upper() == 'M':
+            print('')
+            print("Multiple it is!")
+            print('')
+            
+            rollMultiple()
 
-        while True:
-            print('')
-            repeat = input("Again? (Y/N) ")
-            print('')
-            if repeat.upper() == 'Y':
-                rollMultiple()
-            elif repeat.upper() == 'N':
-                print("Okay, bye!")
-                break
-            else:
-                print("Write Y (Yes) or N (No) ")
-        break
-    else:
-        print("Please choose a valid option")
+            while True:
+                print('')
+                repeat = input("Again? (Y/N) ")
+                print('')
+                if repeat.upper() == 'Y':
+                    rollMultiple()
+                elif repeat.upper() == 'N':
+                    print("Okay, bye!")
+                    break
+                else:
+                    print("Write Y (Yes) or N (No) ")
+            break
+        else:
+            print("Please choose a valid option")

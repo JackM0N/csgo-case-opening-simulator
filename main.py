@@ -24,3 +24,4 @@ elif choice == 1:
     dan.run()
 
 #Future idea: make terminal output display correct rarity color!
+#Future idea: make it posible to input values of keys and chests to display how much money was spent (Maybe even scrape Steam values of chests and skins from marketplace)

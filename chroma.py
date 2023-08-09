@@ -1,13 +1,17 @@
 import case as c
 
-blue = ("SCAR-20 | Grotto", "XM1014 | Quicksilver", "M249 | System Lock", "Glock-18 | Catacombs", "MP9 | Deadly Poison")
-purple = ("Dual Berettas | Urban Shock", "Sawed-Off | Serenity", "MAC-10 | Malachite", "Desert Eagle | Naga")
-pink = ("P250 | Muertos", "M4A4 | 龍王 (Dragon King)", "AK-47 | Cartel")
-red = ("AWP | Man-o'-war", "Galil AR | Chatterbox")
-goldknife = ("Bayonet | ", "Flip Knife | ", "Gut Knife | ", "Karambit | ", "M9 Bayonet | ")
-goldpattern = ("Marble Fade", "Tiger Tooth", "Doppler", "Damascus Steel", "Ultraviolet", "Rust Coat")
+def skins():
+    blue = ("SCAR-20 | Grotto", "XM1014 | Quicksilver", "M249 | System Lock", "Glock-18 | Catacombs", "MP9 | Deadly Poison")
+    purple = ("Dual Berettas | Urban Shock", "Sawed-Off | Serenity", "MAC-10 | Malachite", "Desert Eagle | Naga")
+    pink = ("P250 | Muertos", "M4A4 | 龍王 (Dragon King)", "AK-47 | Cartel")
+    red = ("AWP | Man-o'-war", "Galil AR | Chatterbox")
+    goldknife = ("Bayonet | ", "Flip Knife | ", "Gut Knife | ", "Karambit | ", "M9 Bayonet | ")
+    goldpattern = ("Marble Fade", "Tiger Tooth", "Doppler", "Damascus Steel", "Ultraviolet", "Rust Coat")
+
+    return blue, purple, pink, red, goldknife, goldpattern
 
 def run():
+    blue, purple, pink, red, goldknife, goldpattern = skins()
     case = c.Case(blue, purple, pink, red, goldknife, goldpattern)
 
     while True:

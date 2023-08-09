@@ -83,9 +83,12 @@ class Case():
         stats = {"Blue":0,"Purple":0,"Pink":0,"Red":0,"Gold":0}
 
         for i in range(nrOfRolls):
+            st = ""
+            if random.randint(1,10) == 1:
+                st = "StatTrak™ "
             rarity = nc.rollRarity()
             wear = nc.rollWear()
-            print(self.raritySkin(rarity)+ " " + wear)
+            print(st + ' ' + self.raritySkin(rarity) + " " + wear)
             stats = nc.rarityStats(rarity, stats)
 
         print('')

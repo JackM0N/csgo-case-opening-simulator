@@ -30,23 +30,20 @@ class Case():
         res = ""
         rarity = nc.rollRarity()
 
+        if (random.randint(1,10) == 1):
+            res += "StatTrak™ "
+
         if rarity == "Blue":
-            roll = random.randint(0, len(self.blue)-1)
-            res = self.blue[roll]
+            res += self.blue[random.randint(0, len(self.blue)-1)]
         elif rarity == "Purple":
-            roll = random.randint(0, len(self.purple)-1)
-            res = self.purple[roll]
+            res += self.purple[random.randint(0, len(self.purple)-1)]
         elif rarity == "Pink":
-            roll = random.randint(0, len(self.pink)-1)
-            res = self.pink[roll]
+            res += self.pink[random.randint(0, len(self.pink)-1)]
         elif rarity == "Red":
-            roll = random.randint(0, len(self.red)-1)
-            res = self.red[roll]    
+            res += self.red[random.randint(0, len(self.red)-1)]    
         elif rarity == "Gold":
-            roll = random.randint(0, len(self.goldknife)-1)
-            res = self.goldknife[roll]
-            pat = random.randint(0, len(self.goldpattern)-1)
-            res += self.goldpattern[pat]
+            res += self.goldknife[random.randint(0, len(self.goldknife)-1)]
+            res += self.goldpattern[random.randint(0, len(self.goldpattern)-1)]
 
         return res
 

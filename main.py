@@ -20,7 +20,7 @@ while True:
 
     choice = input("Which case would you like to open? ")
 
-    if choice.isdigit() and int(choice)>=0 and int(choice)<=3:  # <---Dont forget to update this number!
+    if choice.isdigit() and int(choice)>=0 and int(choice)<=4:  # <---Dont forget to update this number!
         choice = int(choice)
         break
     else:

@@ -12,6 +12,9 @@ print("3. Fracture")
 print("4. Chroma")
 print("5. Chroma 2")
 print("6. Chroma 3")
+print("7. CS20")
+print("8. Prisma")
+print("9. Danger Zone")
 print("10. Revolution")
 print('')
 
@@ -39,6 +42,21 @@ elif choice == 3:
 elif choice == 4:
     blue, purple, pink, red, goldknife, goldpattern = s.chromaSkins()
     cscase = c.Case(blue, purple, pink, red, goldknife, goldpattern)
+elif choice == 5:
+    blue, purple, pink, red, goldknife, goldpattern = s.chroma2Skins()
+    cscase = c.Case(blue, purple, pink, red, goldknife, goldpattern)
+elif choice == 6:
+    blue, purple, pink, red, goldknife, goldpattern = s.chroma3Skins()
+    cscase = c.Case(blue, purple, pink, red, goldknife, goldpattern)
+elif choice == 7:
+    blue, purple, pink, red, goldknife, goldpattern = s.cs20Skins()
+    cscase = c.Case(blue, purple, pink, red, goldknife, goldpattern)
+elif choice == 8:
+    blue, purple, pink, red, goldknife, goldpattern = s.prismaCase()
+    cscase = c.Case(blue, purple, pink, red, goldknife, goldpattern)
+elif choice == 9:
+    blue, purple, pink, red, goldknife, goldpattern = s.dangerZoneCase()
+    cscase = c.Case(blue, purple, pink, red, goldknife, goldpattern)    
 elif choice == 10:
     blue, purple, pink, red, goldknife, goldpattern = s.revolutionCase()
     cscase = c.Case(blue, purple, pink, red, goldknife, goldpattern)

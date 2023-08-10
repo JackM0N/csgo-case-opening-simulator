@@ -88,9 +88,58 @@ class Case():
                 st = "StatTrak™ "
             rarity = nc.rollRarity()
             wear = nc.rollWear()
-            print(st + ' ' + self.raritySkin(rarity) + " " + wear)
+            skin = st + ' ' + self.raritySkin(rarity) + " " + wear
+            print(skin.strip())
             stats = nc.rarityStats(rarity, stats)
 
         print('')
         print("Your statistics look like this:")
         print(stats)
+
+    def run(self):
+        while True:
+            simType = input("Would you like to roll single skin each time (S) or simulate opening multiple skins (M)? (Type S or M) ")
+
+            if simType.upper() == 'S':
+                print('')
+                print("Single it is!")
+                print('')
+                print(self.rollSkin()+ " " + self.rollWear())
+                nrOfRolls = 1
+                while True:
+                    print('')
+                    repeat = input("Again? (Y/N) ")
+                    print('')
+                    if repeat.upper() == 'Y':
+                        nrOfRolls += 1
+                        print("(Roll number: " + str(nrOfRolls) + ")")
+                        print(self.rollSkin()+ " " + self.rollWear())
+                    elif repeat.upper() == 'N':
+                        print("Okay, bye!")
+                        break
+                    else:
+                        print("Write Y (Yes) or N (No) ")
+                break
+
+
+            elif simType.upper() == 'M':
+                print('')
+                print("Multiple it is!")
+                print('')
+                
+                self.rollMultiple()
+
+                while True:
+                    print('')
+                    repeat = input("Again? (Y/N) ")
+                    print('')
+                    if repeat.upper() == 'Y':
+                        self.rollMultiple()
+                    elif repeat.upper() == 'N':
+                        print("Okay, bye!")
+                        break
+                    else:
+                        print("Write Y (Yes) or N (No) ")
+                break
+            else:
+                print("Please choose a valid option")

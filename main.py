@@ -1,8 +1,6 @@
 import noCase as nc
-import dreamsAndNightmares as dan
-import riptide as rip
-import fracture as fr
-import chroma as ch
+import skins as s
+import case as c
 
 print('')
 print("Hello! Welcome to my CS:GO Case Opening Simulator!")
@@ -29,13 +27,19 @@ while True:
 if choice == 0:
     nc.run()
 elif choice == 1:
-    dan.run()
+    blue, purple, pink, red, goldknife, goldpattern = s.dreamsAndNightmaresSkins()
+    cscase = c.Case(blue, purple, pink, red, goldknife, goldpattern)
 elif choice == 2:
-    rip.run()
+    blue, purple, pink, red, goldknife, goldpattern = s.riptideSkins()
+    cscase = c.Case(blue, purple, pink, red, goldknife, goldpattern)
 elif choice == 3:
-    fr.run()
+    blue, purple, pink, red, goldknife, goldpattern = s.fractureSkins()
+    cscase = c.Case(blue, purple, pink, red, goldknife, goldpattern)
 elif choice == 4:
-    ch.run()
+    blue, purple, pink, red, goldknife, goldpattern = s.chromaSkins()
+    cscase = c.Case(blue, purple, pink, red, goldknife, goldpattern)
+    
+cscase.run()
 
 
 #Future idea: make it posible to input values of keys and chests to display how much money was spent (Maybe even scrape Steam values of chests and skins from marketplace)

@@ -2,6 +2,7 @@ import noCase as nc
 import random
 
 class Case():
+
     def __init__(self, blues, purples, pinks, reds, knifes, kpatterns):
         self.blue = blues
         self.purple = purples
@@ -42,31 +43,30 @@ class Case():
         elif rarity == "Red":
             res += self.red[random.randint(0, len(self.red)-1)]    
         elif rarity == "Gold":
-            res += self.goldknife[random.randint(0, len(self.goldknife)-1)]
-            res += self.goldpattern[random.randint(0, len(self.goldpattern)-1)]
-
+            if len(self.goldpattern) > 0:
+                res += self.goldknife[random.randint(0, len(self.goldknife)-1)]
+                res += self.goldpattern[random.randint(0, len(self.goldpattern)-1)]
+            else:
+                res += self.goldknife[random.randint(0, len(self.goldknife)-1)]
         return res
 
     def raritySkin(self, rarity):
         res = ""
 
         if rarity == "Blue":
-            roll = random.randint(0, len(self.blue)-1)
-            res = self.blue[roll]
+            res += self.blue[random.randint(0, len(self.blue)-1)]
         elif rarity == "Purple":
-            roll = random.randint(0, len(self.purple)-1)
-            res = self.purple[roll]
+            res += self.purple[random.randint(0, len(self.purple)-1)]
         elif rarity == "Pink":
-            roll = random.randint(0, len(self.pink)-1)
-            res = self.pink[roll]
+            res += self.pink[random.randint(0, len(self.pink)-1)]
         elif rarity == "Red":
-            roll = random.randint(0, len(self.red)-1)
-            res = self.red[roll]
+            res += self.red[random.randint(0, len(self.red)-1)]
         elif rarity == "Gold":
-            roll = random.randint(0, len(self.goldknife)-1)
-            res = self.goldknife[roll]
-            pat = random.randint(0,len(self.goldpattern)-1)
-            res += self.goldpattern[pat]
+            if len(self.goldpattern) > 0:
+                res += self.goldknife[random.randint(0, len(self.goldknife)-1)]
+                res += self.goldpattern[random.randint(0, len(self.goldpattern)-1)]
+            else:
+                res += self.goldknife[random.randint(0, len(self.goldknife)-1)]
 
         return res
     
@@ -80,17 +80,20 @@ class Case():
             else:
                 print("Please input a number thats bigger than 0!")
 
-        stats = {"Blue":0,"Purple":0,"Pink":0,"Red":0,"Gold":0}
+        stats = {"Blue":0,"BlueST":0,"Purple":0,"PurpleST":0,"Pink":0,"PinkST":0,"Red":0,"RedST":0,"Gold":0,"GoldST":0}
 
         for i in range(nrOfRolls):
             st = ""
+            trak = False
             if random.randint(1,10) == 1:
                 st = "StatTrak™ "
+                trak = True
             rarity = nc.rollRarity()
             wear = nc.rollWear()
             skin = st + ' ' + self.raritySkin(rarity) + " " + wear
             print(skin.strip())
-            stats = nc.rarityStats(rarity, stats)
+            stats = nc.rarityStats(rarity, stats, trak)
+            trak = False
 
         print('')
         print("Your statistics look like this:")
@@ -98,6 +101,7 @@ class Case():
 
     def run(self):
         while True:
+            print('')
             simType = input("Would you like to roll single skin each time (S) or simulate opening multiple skins (M)? (Type S or M) ")
 
             if simType.upper() == 'S':

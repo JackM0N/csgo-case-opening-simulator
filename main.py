@@ -12,13 +12,14 @@ print("3. Fracture")
 print("4. Chroma")
 print("5. Chroma 2")
 print("6. Chroma 3")
+print("10. Revolution")
 print('')
 
 while True:
 
     choice = input("Which case would you like to open? ")
 
-    if choice.isdigit() and int(choice)>=0 and int(choice)<=4:  # <---Dont forget to update this number!
+    if choice.isdigit() and int(choice)>=0 and int(choice)<=10:  # <---Dont forget to update this number!
         choice = int(choice)
         break
     else:
@@ -38,7 +39,10 @@ elif choice == 3:
 elif choice == 4:
     blue, purple, pink, red, goldknife, goldpattern = s.chromaSkins()
     cscase = c.Case(blue, purple, pink, red, goldknife, goldpattern)
-    
+elif choice == 10:
+    blue, purple, pink, red, goldknife, goldpattern = s.revolutionCase()
+    cscase = c.Case(blue, purple, pink, red, goldknife, goldpattern)
+
 cscase.run()
 
 

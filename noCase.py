@@ -32,17 +32,32 @@ def rollWear():
     
     return res
         
-def rarityStats(skin, stats):
+def rarityStats(skin, stats, trak):
     if skin == "Blue":
-        stats["Blue"] += 1
+        if trak:
+            stats["BlueST"] += 1
+        else:
+            stats["Blue"] += 1
     elif skin == "Purple":
-        stats["Purple"] += 1
+        if trak:
+            stats["PurpleST"] += 1
+        else:
+            stats["Purple"] += 1
     elif skin == "Pink":
-        stats["Pink"] += 1
+        if trak:
+            stats["PinkST"] += 1
+        else:
+            stats["Pink"] += 1
     elif skin == "Red":
-        stats["Red"] += 1
+        if trak:
+            stats["RedST"] += 1
+        else:
+            stats["Red"] += 1
     elif skin == "Gold":
-        stats["Gold"] += 1
+        if trak:
+            stats["GoldST"] += 1
+        else:
+            stats["Gold"] += 1
 
     return stats
 

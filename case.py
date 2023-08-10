@@ -52,6 +52,11 @@ class Case():
 
     def raritySkin(self, rarity):
         res = ""
+        trak = False
+
+        if random.randint(1,10) == 1:
+                res += "StatTrak™ "
+                trak = True
 
         if rarity == "Blue":
             res += self.blue[random.randint(0, len(self.blue)-1)]
@@ -66,9 +71,10 @@ class Case():
                 res += self.goldknife[random.randint(0, len(self.goldknife)-1)]
                 res += self.goldpattern[random.randint(0, len(self.goldpattern)-1)]
             else:
-                res += self.goldknife[random.randint(0, len(self.goldknife)-1)]
+                res = self.goldknife[random.randint(0, len(self.goldknife)-1)]
+                trak = False
 
-        return res
+        return res, trak
     
     def rollMultiple(self):
         while True:
@@ -83,17 +89,12 @@ class Case():
         stats = {"Blue":0,"BlueST":0,"Purple":0,"PurpleST":0,"Pink":0,"PinkST":0,"Red":0,"RedST":0,"Gold":0,"GoldST":0}
 
         for i in range(nrOfRolls):
-            st = ""
-            trak = False
-            if random.randint(1,10) == 1:
-                st = "StatTrak™ "
-                trak = True
             rarity = nc.rollRarity()
             wear = nc.rollWear()
-            skin = st + ' ' + self.raritySkin(rarity) + " " + wear
-            print(skin.strip())
+            skin, trak = self.raritySkin(rarity)
+            skinInfo = str(skin) + " " + wear
+            print(skinInfo.strip())
             stats = nc.rarityStats(rarity, stats, trak)
-            trak = False
 
         print('')
         print("Your statistics look like this:")

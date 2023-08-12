@@ -1,4 +1,3 @@
-import noCase as nc
 import random
 
 class Case():
@@ -10,6 +9,22 @@ class Case():
         self.red = reds
         self.goldknife = knifes 
         self.goldpattern =  kpatterns
+
+    def rollRarity(self):
+        res = ""
+        roll = random.randint(0, 10000)
+        if roll <= 7992:
+            res = "Blue"
+        elif roll <= 9590:
+            res = "Purple"
+        elif roll <= 9910:
+            res = "Pink"
+        elif roll <= 9974:
+            res = "Red"
+        else:
+            res = "Gold"
+    
+        return res
 
     def rollWear(self):
         res = ""
@@ -29,7 +44,7 @@ class Case():
 
     def rollSkin(self):
         res = ""
-        rarity = nc.rollRarity()
+        rarity = self.rollRarity()
 
         if (random.randint(1,10) == 1):
             res += "StatTrak™ "
@@ -76,6 +91,35 @@ class Case():
 
         return res, trak
     
+    def rarityStats(self,skin, stats, trak):
+        if skin == "Blue":
+            if trak:
+                stats["BlueST"] += 1
+            else:
+                stats["Blue"] += 1
+        elif skin == "Purple":
+            if trak:
+                stats["PurpleST"] += 1
+            else:
+                stats["Purple"] += 1
+        elif skin == "Pink":
+            if trak:
+                stats["PinkST"] += 1
+            else:
+                stats["Pink"] += 1
+        elif skin == "Red":
+            if trak:
+                stats["RedST"] += 1
+            else:
+                stats["Red"] += 1
+        elif skin == "Gold":
+            if trak:
+                stats["GoldST"] += 1
+            else:
+                stats["Gold"] += 1
+
+        return stats
+    
     def rollMultiple(self):
         while True:
             nrOfRolls = input("How many skins would you like to open? ")
@@ -89,12 +133,12 @@ class Case():
         stats = {"Blue":0,"BlueST":0,"Purple":0,"PurpleST":0,"Pink":0,"PinkST":0,"Red":0,"RedST":0,"Gold":0,"GoldST":0}
 
         for i in range(nrOfRolls):
-            rarity = nc.rollRarity()
-            wear = nc.rollWear()
+            rarity = self.rollRarity()
+            wear = self.rollWear()
             skin, trak = self.raritySkin(rarity)
             skinInfo = str(skin) + " " + wear
             print(skinInfo.strip())
-            stats = nc.rarityStats(rarity, stats, trak)
+            stats = self.rarityStats(rarity, stats, trak)
 
         print('')
         print("Your statistics look like this:")

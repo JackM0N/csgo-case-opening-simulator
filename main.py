@@ -1,4 +1,3 @@
-import noCase as nc
 import skins as s
 import case as c
 

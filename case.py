@@ -164,7 +164,7 @@ class Case():
                         print("(Roll number: " + str(nrOfRolls) + ")")
                         print(self.rollSkin()+ " " + self.rollWear())
                     elif repeat.upper() == 'N':
-                        print("Okay, bye!")
+                        print("Okay!")
                         break
                     else:
                         print("Write Y (Yes) or N (No) ")
@@ -185,7 +185,7 @@ class Case():
                     if repeat.upper() == 'Y':
                         self.rollMultiple()
                     elif repeat.upper() == 'N':
-                        print("Okay, bye!")
+                        print("Okay!")
                         break
                     else:
                         print("Write Y (Yes) or N (No) ")

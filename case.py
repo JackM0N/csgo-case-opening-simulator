@@ -1,6 +1,7 @@
 import random
 from bs4 import BeautifulSoup
 import requests
+import time
 
 class Case():
 
@@ -123,17 +124,29 @@ class Case():
         return stats
     
     def scrape(self,skin):
-        url = 'https://steamcommunity.com/market/search?appid=730&q=' + skin
 
-        page = requests.get(url)
+        time.sleep(10)
 
-        soup = BeautifulSoup(page.text, 'html.parser')
+        while True:
 
-        money = soup.find('span', class_ = 'sale_price').text
-        
-        drip = money.split(' ')[0]
-        
-        val = drip[1:]
+            url = 'https://steamcommunity.com/market/search?appid=730&q=' + skin
+
+            page = requests.get(url)
+
+            soup = BeautifulSoup(page.text, 'html.parser')
+
+            money = soup.find('span', class_ = 'sale_price')
+
+            if money is None:
+                continue
+
+            m = money.text
+
+            drip = m.split(' ')[0]
+                
+            val = drip[1:]
+
+            break
 
         return float(val)
     
@@ -154,7 +167,9 @@ class Case():
             wear = self.rollWear()
             skin, trak = self.raritySkin(rarity)
             skinInfo = str(skin) + " " + wear
-            print(skinInfo.strip())
+            skinInfo = skinInfo.strip()
+            value = self.scrape(skinInfo)
+            print(skinInfo + ' ($' + str(value) + ')')
             stats = self.rarityStats(rarity, stats, trak)
 
         print('')

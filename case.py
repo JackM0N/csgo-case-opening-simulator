@@ -1,4 +1,6 @@
 import random
+from bs4 import BeautifulSoup
+import requests
 
 class Case():
 
@@ -119,6 +121,21 @@ class Case():
                 stats["Gold"] += 1
 
         return stats
+    
+    def scrape(self,skin):
+        url = 'https://steamcommunity.com/market/search?appid=730&q=' + skin
+
+        page = requests.get(url)
+
+        soup = BeautifulSoup(page.text, 'html.parser')
+
+        money = soup.find('span', class_ = 'sale_price').text
+        
+        drip = money.split(' ')[0]
+        
+        val = drip[1:]
+
+        return float(val)
     
     def rollMultiple(self):
         while True:

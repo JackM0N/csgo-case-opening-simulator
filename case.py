@@ -125,7 +125,7 @@ class Case():
     
     def scrape(self,skin):
 
-        time.sleep(10)
+        time.sleep(5)
 
         while True:
 
@@ -153,14 +153,22 @@ class Case():
     def rollMultiple(self):
         while True:
             nrOfRolls = input("How many skins would you like to open? ")
+            print('')
+            keys = input("How how much have you spent on a single key? ($) ")
+            print('')
+            cases = input("How how much have you spent on average on a single case? ($) ")
 
-            if nrOfRolls.isdigit() and int(nrOfRolls) > 0:
+            if nrOfRolls.isdigit() and int(nrOfRolls) > 0 and float(keys) > 0 and float(cases) > 0:
                 nrOfRolls = int(nrOfRolls)
+                keys = float(keys)
+                cases = float(cases)
                 break
             else:
-                print("Please input a number thats bigger than 0!")
+                print("One or more input values are wrong. Please input actual numbers that are greater than 0!")
 
         stats = {"Blue":0,"BlueST":0,"Purple":0,"PurpleST":0,"Pink":0,"PinkST":0,"Red":0,"RedST":0,"Gold":0,"GoldST":0}
+
+        combinedValue = 0
 
         for i in range(nrOfRolls):
             rarity = self.rollRarity()
@@ -169,12 +177,15 @@ class Case():
             skinInfo = str(skin) + " " + wear
             skinInfo = skinInfo.strip()
             value = self.scrape(skinInfo)
+            combinedValue += value
             print(skinInfo + ' ($' + str(value) + ')')
             stats = self.rarityStats(rarity, stats, trak)
 
         print('')
         print("Your statistics look like this:")
+        print("You rolled $" + str(round(combinedValue,2)) + " worth of skins, in which:")
         print(stats)
+        print("You have made " + str(nrOfRolls*(keys+cases) - combinedValue) + " dollars!")
 
     def run(self):
         while True:

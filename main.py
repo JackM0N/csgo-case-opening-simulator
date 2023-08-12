@@ -64,5 +64,3 @@ while True:
         cscase = c.Case(blue, purple, pink, red, goldknife, goldpattern)
 
     cscase.run()
-
-#Started 100 cases: 18.30 finished: crashed at 65th case
